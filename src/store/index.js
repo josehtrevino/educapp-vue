@@ -1,12 +1,9 @@
 import { createStore } from 'vuex'
 
+import teachersModule from './modules/teachers';
+
 export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
+    teachers: teachersModule
   }
 })

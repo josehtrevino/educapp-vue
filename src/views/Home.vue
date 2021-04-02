@@ -1,12 +1,27 @@
 <template>
-  <div class="home">
-    <h1>Hello From Home!</h1>
+  <div>
+    <div class="row" v-if="displayTeachers">
+      <teacher-item v-for="teacher in displayTeachers" :key="teacher.id" :teacherData="teacher"></teacher-item>
+    </div>
   </div>
 </template>
 
 <script>
-
+import TeacherItem from '../components/TeacherItem.vue';
 export default {
   name: 'Home',
+  components:{
+    TeacherItem
+  },
+  data(){
+    return {
+
+    }
+  },
+  computed: {
+    displayTeachers(){
+      return this.$store.getters['teachers/getTeachers'];
+    }
+  }
 }
 </script>

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import SingleTeacher from '../views/SingleTeacher.vue'
 import Register from '../views/Register.vue'
 import Messages from '../views/Messages.vue'
 
@@ -9,7 +10,8 @@ const routes = [
     name: 'Home',
     component: Home
   },
-  { path: '/coaches/:id', component: null,
+  { path: '/teachers/:id', component: SingleTeacher,
+      props: true,
       children: [
         { path: '/contact', component: null }
       ]},
