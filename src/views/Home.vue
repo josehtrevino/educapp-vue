@@ -22,6 +22,9 @@ export default {
     displayTeachers(){
       return this.$store.getters['teachers/getTeachers'];
     }
+  },
+  created(){
+    this.$store.dispatch('teachers/getAllTeachers');
   }
 }
 </script>

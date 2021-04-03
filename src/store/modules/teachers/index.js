@@ -1,44 +1,36 @@
 const getters = {
-    getTeachers: (state) => state.coaches
+    getTeachers: (state) => state.teachers
 }
 
-const actions = {}
+const actions = {
+    async getAllTeachers(context){
+        const response = await fetch('https://educapp-vue-default-rtdb.firebaseio.com/teachers.json', {
+            method: 'GET'
+        });
 
-const mutations = {}
+        const data = await response.json();
+
+        const modifiedData = [];
+
+        for (let el in data){
+            modifiedData.push(data[el]);
+        }
+
+        context.commit('updateTeachersList', modifiedData);
+    }
+}
+
+const mutations = {
+    updateTeachersList(state, payload){
+        state.teachers = payload;
+    }
+}
 
 export default{
     namespaced: true,
     state(){
         return {
-            coaches: [
-                {
-                    'id': 'a01',
-                    'firstName': 'Edward',
-                    'lastName': 'Johnson',
-                    'age': '32',
-                    'skills': ['Algebra', 'Calculus', 'Statistics'],
-                    'about': 'Be the teacher you always wanted to have',
-                    'country': 'Canada'
-                },
-                {
-                    'id': 'a02',
-                    'firstName': 'Christina',
-                    'lastName': 'Ruzzo',
-                    'age': '28',
-                    'skills': ['Web development', 'UX UI Design', 'Mobile development'],
-                    'about': 'Education is the key to change our world',
-                    'country': 'Argentina'
-                },
-                {
-                    'id': 'a03',
-                    'firstName': 'Gerard',
-                    'lastName': 'Muñoz',
-                    'age': '36',
-                    'skills': ['English', 'French', 'German'],
-                    'about': 'I love learning something new everyday',
-                    'country': 'Spain'
-                }
-            ]
+            teachers: null
         }
     },
     getters,
