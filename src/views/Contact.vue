@@ -24,7 +24,15 @@
         },
         props: ['id'],
         methods: {
-
+            submitForm(){
+                if(this.name !== '' && this.message !== ''){
+                    this.$store.dispatch('messages/saveMessage', {
+                        id: this.$route.params.id,
+                        name: this.name,
+                        message: this.message
+                    })
+                }
+            }
         }
     }
 </script>
