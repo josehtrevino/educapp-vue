@@ -1,4 +1,8 @@
-const getters = {}
+const getters = {
+    getMessages(state){
+        return state.messages;
+    }
+}
 
 const actions = {
     async saveMessage(context, payload){
@@ -15,12 +19,35 @@ const actions = {
         })
 
         context.commit('addMessage', finalData);
+    },
+    async fetchMessages(context){
+        const messages = [];
+
+        const response = await fetch('https://educapp-vue-default-rtdb.firebaseio.com/messages.json');
+
+        const data = await response.json();
+
+        for(let key in data){
+            const message = {
+                teacherId: data[key].teacherId,
+                id: data[key].id,
+                name: data[key].name,
+                message: data[key].message
+            }
+
+            messages.push(message);
+        }
+
+        context.commit('setSavedMessages', messages);
     }
 }
 
 const mutations = {
     addMessage(state, payload){
         state.messages.push(payload);
+    },
+    setSavedMessages(state, payload){
+        state.messages = payload;
     }
 }
 

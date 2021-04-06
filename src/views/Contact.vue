@@ -31,6 +31,8 @@
                         name: this.name,
                         message: this.message
                     })
+
+                    this.$toast.success(`Your Message Was Succesfully Sent!`);
                 }
             }
         }

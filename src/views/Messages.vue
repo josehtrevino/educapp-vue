@@ -1,12 +1,39 @@
 <template>
     <div>
-        <h1>Hello From Messages!</h1>
+        <h2 class="mb-2">Messages From Students:</h2>
+        <message-item v-for="message in displayMessages"
+        :key="message.id"
+        :id="message.id"
+        :name="message.name"
+        :message="message.message"
+        ></message-item>
     </div>
 </template>
 
 <script>
-    export default {
-        name:'Messages'
+import MessageItem from "../components/MessageItem.vue";
+
+    export default{
+        name:'Messages',
+        data(){
+            return {}
+        },
+        components: {
+             MessageItem 
+        }, 
+        computed: {
+            displayMessages(){
+                return this.$store.getters['messages/getMessages'];
+            }
+        },
+        methods: {
+            loadMessages(){
+                this.$store.dispatch('messages/fetchMessages');
+            }
+        },
+        created(){
+            this.loadMessages();
+        }
     }
 </script>
 

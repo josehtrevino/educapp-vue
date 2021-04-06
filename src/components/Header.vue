@@ -11,9 +11,6 @@
                     <router-link class="nav-link active" aria-current="page" to="/">Home</router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" to="/register">Add a Teacher</router-link>
-                </li>
-                <li class="nav-item">
                     <router-link class="nav-link" to="/messages">Messages</router-link>
                 </li>
             </ul>
