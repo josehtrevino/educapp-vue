@@ -1,5 +1,9 @@
 # educapp
 
+![Screenshot](./public/screenshot.png)
+
+App built by using VueJS (Vuex, Vue Router, Vue Toaster) and Firebase as backend. 
+
 ## Project setup
 ```
 npm install
